@@ -4,7 +4,6 @@ import java.util.Scanner;
 public class Week1 {
     public static String startDay1() {
         try {
-            Scanner sc = new Scanner(System.in);
 
             System.out.println("Ingresa dos numeros:");
 
@@ -24,7 +23,6 @@ public class Week1 {
     public static String startDay2() {
         try {
             int cantidadNinios, cantidadDulces, totalDulces;
-            Scanner sc = new Scanner(System.in);
 
             System.out.println("ninios y dulces: ");
 
@@ -46,7 +44,6 @@ public class Week1 {
 //    esto en teoría es muy fácil, pero a el le ha dado un poco de pereza, prefiere hacer
 //    un programa que le ayude en su tarea. ¿Puedes ayudarlo?
     static public void startDay3() throws Exception {
-        Scanner sc = new Scanner(System.in);
         String input;
 
         System.out.println("Input: ");
@@ -60,12 +57,26 @@ public class Week1 {
 
     static public void startDay4() throws Exception {
         String stringOne, stringTwo;
-        Scanner sc = new Scanner(System.in);
 
         stringOne = sc.next();
         stringTwo = sc.next();
 
         System.out.println(stringOne + " " + stringTwo);
     }
+
+    static public void startDay5() throws Exception {
+
+        /*
+        El input consistirá en un entero N, la cantidad de elementos de la lista.
+        La siguiente línea recibirá N enteros pertenecientes a los elementos de la lista, cada elemento será un
+        string S sin espacios, (no pueden haber elementos repetidos)
+        Finalmente el programa recibe un entero X.
+        */
+
+
+
+    }
+
+    public static Scanner sc = new Scanner(System.in);
 
 }
