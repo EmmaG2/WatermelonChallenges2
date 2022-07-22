@@ -56,4 +56,16 @@ public class Week1 {
 
         System.out.println(input.length());
     }
+
+
+    static public void startDay4() throws Exception {
+        String stringOne, stringTwo;
+        Scanner sc = new Scanner(System.in);
+
+        stringOne = sc.next();
+        stringTwo = sc.next();
+
+        System.out.println(stringOne + " " + stringTwo);
+    }
+
 }
