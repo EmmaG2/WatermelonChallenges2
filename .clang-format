@@ -1,0 +1,21 @@
+﻿---
+BasedOnStyle: Microsoft
+AlignAfterOpenBracket: Align
+AlignConsecutiveMacros: 'true'
+AlignConsecutiveAssignments: 'true'
+AlignConsecutiveDeclarations: 'true'
+AlignEscapedNewlines: Left
+AlignOperands: 'true'
+AlignTrailingComments: 'true'
+AllowAllArgumentsOnNextLine: 'true'
+AlwaysBreakBeforeMultilineStrings: 'true'
+ColumnLimit: '90'
+IndentWidth: '2'
+SpacesBeforeTrailingComments: '2'
+SpacesInAngles: 'false'
+SpacesInContainerLiterals: 'false'
+SpacesInParentheses: 'false'
+TabWidth: '2'
+UseTab: ForIndentation
+
+...
