@@ -1,9 +1,9 @@
-import com.challenges.Week1;
+import com.challenges.Week2;
 
 public class Main
 {
 	public static void main(String[] args) throws Exception
 	{
-		Week1.startDay7();
+		Week2.startDay8();
 	}
 }
