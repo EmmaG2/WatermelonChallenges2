@@ -1,8 +1,17 @@
 package com.challenges;
+
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Scanner;
 
+/**
+ * description of class Week1
+{
+ *
+ * @author Emma
+ * @version
+ */
 public class Week1
 {
 	public static String startDay1()
@@ -52,6 +61,7 @@ public class Week1
 			return "Error, vuelve a correr el programa";
 		}
 	}
+
 	static public void startDay3() throws Exception
 	{
 		String input;
@@ -98,8 +108,47 @@ public class Week1
 
 		input = sc.next();
 		input = new StringBuilder(input).reverse().toString();
+		sc.close();
 
 		System.out.println(input);
+	}
+
+	public static void startDay7()
+	{
+		int cantidadElementos = sc.nextInt();
+		int cantidadMayores   = sc.nextInt();
+
+		System.out.println(logicDay7(cantidadElementos, cantidadMayores));
+	}
+
+	/**
+	  * Descripcion del metodo:
+	    * Este Metodo
+	  {
+	  *
+	  * @author Emma
+	    *
+	    * @param cantidadElementos = Este parametro es equivalente a n
+	    * @param cantidadMayores = Este parametro es equivalente a k
+
+	  * @version
+	  */
+
+	private static int logicDay7(int cantidadElementos, int cantidadMayores)
+	{
+		int           result  = 0;
+		List<Integer> numeros = new ArrayList<>();
+
+		for (int i = 0; i < cantidadElementos; i++)
+			numeros.add(sc.nextInt());
+
+		Collections.sort(numeros);
+		Collections.reverse(numeros);
+
+		for (int i = 0; i < cantidadMayores; i++)
+			result += numeros.get(i);
+
+		return result;
 	}
 
 	public static Scanner sc = new Scanner(System.in);
