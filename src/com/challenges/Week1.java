@@ -7,10 +7,9 @@ import java.util.Scanner;
 
 /**
  * description of class Week1
-{
+ * {
  *
  * @author Emma
- * @version
  */
 public class Week1
 {
@@ -120,19 +119,6 @@ public class Week1
 
 		System.out.println(logicDay7(cantidadElementos, cantidadMayores));
 	}
-
-	/**
-	  * Descripcion del metodo:
-	    * Este Metodo
-	  {
-	  *
-	  * @author Emma
-	    *
-	    * @param cantidadElementos = Este parametro es equivalente a n
-	    * @param cantidadMayores = Este parametro es equivalente a k
-
-	  * @version
-	  */
 
 	private static int logicDay7(int cantidadElementos, int cantidadMayores)
 	{
