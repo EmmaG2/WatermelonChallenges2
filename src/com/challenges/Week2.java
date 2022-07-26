@@ -46,7 +46,7 @@ public class Week2
 		for (i = 0; i < quantityNumbers; i++)
 			numbers.add(sc.nextInt());
 
-		numbers.forEach(n -> System.out.print(n + " "));
+		numbers.stream().sorted().forEach(n -> System.out.print(n + " "));
 	}
 
 	public static Scanner sc = new Scanner(System.in);
