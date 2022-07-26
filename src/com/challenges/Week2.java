@@ -1,6 +1,9 @@
 package com.challenges;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
+import java.util.stream.Collectors;
 
 public class Week2
 {
@@ -24,11 +27,26 @@ public class Week2
 					return false;
 
 		if (matriz[0][0] == 1)
-			for (int i = 0, j = 0; i < matriz.length && j < matriz.length; i++, j++)
+			for (int i = 0, j = 0; i < matriz.length; i++, j++)
 				if (matriz[i][j] != 1)
 					return false;
 
 		return true;
+	}
+
+	public static void startDay9()
+	{
+		List<Integer> numbers = new ArrayList<>();
+		int           quantityNumbers, i;
+
+		quantityNumbers = sc.nextInt();
+
+		for (i = 0; i < quantityNumbers; i++)
+			numbers.add(sc.nextInt());
+
+		numbers = numbers.parallelStream().distinct().collect(Collectors.toList());
+
+		numbers.stream().sorted().forEach(System.out::print);
 	}
 
 	public static Scanner sc = new Scanner(System.in);
