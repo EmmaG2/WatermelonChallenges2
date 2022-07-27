@@ -74,13 +74,13 @@ public class Week2
 		System.out.println("Cola ->");
 		for (int i = 0; i < numberOfElements; i++)
 		{
-			System.out.print(cola.remove());
+			System.out.print(cola.remove() + " ");
 		}
 
 		System.out.println("\nStack ->");
 		for (int i = 0; i < numberOfElements; i++)
 		{
-			System.out.print(pila.pop());
+			System.out.print(pila.pop() + " ");
 		}
 	}
 
