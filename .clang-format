@@ -16,6 +16,6 @@ SpacesInAngles: 'false'
 SpacesInContainerLiterals: 'false'
 SpacesInParentheses: 'false'
 TabWidth: '2'
-UseTab: ForIndentation
+UseTab: Never
 
 ...
