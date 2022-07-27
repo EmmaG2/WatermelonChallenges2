@@ -136,27 +136,6 @@ public class Week1
 
     return result;
   }
-  private static int testLogicDay7(int cantidadElementos, int cantidadMayores)
-  {
-    int           result  = 0;
-    List<Integer> numeros = new ArrayList<>();
-
-    for (int i = 0; i < cantidadElementos; i++)
-      numeros.add(sc.nextInt());
-
-    Collections.sort(numeros);
-    Collections.reverse(numeros);
-
-    for (int i = 0; i < cantidadMayores; i++)
-      result += numeros.get(i);
-
-    if (cantidadElementos == 10)
-    {
-      return testLogicDay7(cantidadElementos - 1, cantidadMayores - 1);
-    }
-
-    return result;
-  }
 
   public static Scanner sc = new Scanner(System.in);
 }
