@@ -18,19 +18,19 @@ public class Week1
     try
     {
 
-      System.out.println( "Ingresa dos numeros:" );
+      System.out.println("Ingresa dos numeros:");
 
       int number1 = sc.nextInt();
       int number2 = sc.nextInt();
 
-      if ( number1 >= Math.pow( 10, 5 ) || number2 >= Math.pow( 10, 5 ) )
+      if (number1 >= Math.pow(10, 5) || number2 >= Math.pow(10, 5))
         return "mongolito";
 
       sc.close();
 
-      return "Resultado: " + ( number1 + number2 );
+      return "Resultado: " + (number1 + number2);
     }
-    catch ( Exception e )
+    catch (Exception e)
     {
       return "Error, vuelve a correr el programa";
     }
@@ -42,20 +42,20 @@ public class Week1
     {
       int cantidadNinios, cantidadDulces, totalDulces;
 
-      System.out.println( "ninios y dulces: " );
+      System.out.println("ninios y dulces: ");
 
       cantidadDulces = sc.nextInt();
       cantidadNinios = sc.nextInt();
       totalDulces    = cantidadDulces / cantidadNinios;
 
-      if ( totalDulces % 2 == 0 )
+      if (totalDulces % 2 == 0)
         return "Dulces: " + totalDulces;
 
       sc.close();
 
       return "No se puede: -1";
     }
-    catch ( Exception e )
+    catch (Exception e)
     {
       return "Error, vuelve a correr el programa";
     }
@@ -65,12 +65,12 @@ public class Week1
   {
     String input;
 
-    System.out.println( "Input: " );
+    System.out.println("Input: ");
     input = sc.nextLine();
 
     sc.close();
 
-    System.out.println( input.length() );
+    System.out.println(input.length());
   }
 
   static public void startDay4() throws Exception
@@ -80,25 +80,25 @@ public class Week1
     stringOne = sc.next();
     stringTwo = sc.next();
 
-    System.out.println( stringOne + " " + stringTwo );
+    System.out.println(stringOne + " " + stringTwo);
   }
 
   static public void startDay5() throws Exception
   {
-    List< String > lista = new ArrayList<>();
+    List<String> lista = new ArrayList<>();
 
-    System.out.println( "Lista Length:" );
+    System.out.println("Lista Length:");
     int listaLenght = sc.nextInt(), xParam;
 
-    for ( int i = 0; i < listaLenght; i++ )
+    for (int i = 0; i < listaLenght; i++)
     {
       String inputElements = sc.next();
-      lista.add( inputElements );
+      lista.add(inputElements);
     }
 
     xParam = sc.nextInt();
 
-    System.out.println( lista.get( xParam ) );
+    System.out.println(lista.get(xParam));
   }
 
   public static void startDay6()
@@ -106,10 +106,10 @@ public class Week1
     String input;
 
     input = sc.next();
-    input = new StringBuilder( input ).reverse().toString();
+    input = new StringBuilder(input).reverse().toString();
     sc.close();
 
-    System.out.println( input );
+    System.out.println(input);
   }
 
   public static void startDay7()
@@ -117,25 +117,46 @@ public class Week1
     int cantidadElementos = sc.nextInt();
     int cantidadMayores   = sc.nextInt();
 
-    System.out.println( logicDay7( cantidadElementos, cantidadMayores ) );
+    System.out.println(logicDay7(cantidadElementos, cantidadMayores));
   }
 
-  private static int logicDay7( int cantidadElementos, int cantidadMayores )
+  private static int logicDay7(int cantidadElementos, int cantidadMayores)
   {
-    int             result  = 0;
-    List< Integer > numeros = new ArrayList<>();
+    int           result  = 0;
+    List<Integer> numeros = new ArrayList<>();
 
-    for ( int i = 0; i < cantidadElementos; i++ )
-      numeros.add( sc.nextInt() );
+    for (int i = 0; i < cantidadElementos; i++)
+      numeros.add(sc.nextInt());
 
-    Collections.sort( numeros );
-    Collections.reverse( numeros );
+    Collections.sort(numeros);
+    Collections.reverse(numeros);
 
-    for ( int i = 0; i < cantidadMayores; i++ )
-      result += numeros.get( i );
+    for (int i = 0; i < cantidadMayores; i++)
+      result += numeros.get(i);
+
+    return result;
+  }
+  private static int testLogicDay7(int cantidadElementos, int cantidadMayores)
+  {
+    int           result  = 0;
+    List<Integer> numeros = new ArrayList<>();
+
+    for (int i = 0; i < cantidadElementos; i++)
+      numeros.add(sc.nextInt());
+
+    Collections.sort(numeros);
+    Collections.reverse(numeros);
+
+    for (int i = 0; i < cantidadMayores; i++)
+      result += numeros.get(i);
+
+    if (cantidadElementos == 10)
+    {
+      return testLogicDay7(cantidadElementos - 1, cantidadMayores - 1);
+    }
 
     return result;
   }
 
-  public static Scanner sc = new Scanner( System.in );
+  public static Scanner sc = new Scanner(System.in);
 }
