@@ -1,5 +1,6 @@
 package com.challenges;
 
+import java.lang.reflect.Array;
 import java.util.LinkedList;
 import java.util.Queue;
 import java.util.Scanner;
@@ -9,6 +10,7 @@ import java.util.TreeSet;
 
 public class Week2
 {
+
   public static void startDay8()
   {
     int widthHeight = sc.nextInt();
@@ -89,5 +91,56 @@ public class Week2
     System.out.println(output);
   }
 
-  public static Scanner sc = new Scanner(System.in);
+  public static void startDay12()
+  {
+    char[] word = requestAWord();
+
+    reverseInput(word);
+
+    printOutputInScreen(word);
+  }
+
+  private static char[] requestAWord()
+  {
+    final int ASCII_MIN_UPPER = 65;
+    final int ASCII_MAX_UPPER = 97;
+
+    String userInput = sc.nextLine();
+    char   AsciiCode = userInput.charAt(0);
+
+    isUpperCase(ASCII_MIN_UPPER, ASCII_MAX_UPPER, AsciiCode);
+
+    char[] reverseWord = userInput.toCharArray();
+    return reverseWord;
+  }
+
+  private static void isUpperCase(final int asciiMin, final int asciiUpper,
+                                  char AsciiCode)
+  {
+    System.out.println(
+        (AsciiCode >= asciiMin && AsciiCode < asciiUpper ? "is Upper" : "is Lower"));
+  }
+
+  private static void reverseInput(char[] reverseWord)
+  {
+    final int ASCII_DIFFERENCE = 32;
+
+    for (int i = 0; i < reverseWord.length; i++)
+    {
+      if (reverseWord[i] >= 'A' && reverseWord[i] <= 'Z')
+        reverseWord[i] = (char)((int)reverseWord[i] + ASCII_DIFFERENCE);
+      else if (reverseWord[i] >= 'a' && reverseWord[i] <= 'z')
+        reverseWord[i] = (char)((int)reverseWord[i] - ASCII_DIFFERENCE);
+    }
+  }
+
+  private static void printOutputInScreen(char[] reverseWord)
+  {
+    for (int i = 0; i < reverseWord.length; i++)
+    {
+      System.out.print(reverseWord[i]);
+    }
+  }
+
+  public static Scanner sc = new Scanner(System.in).useDelimiter("\n");
 }
