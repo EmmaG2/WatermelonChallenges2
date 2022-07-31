@@ -1,12 +1,8 @@
 package com.challenges;
 
 import java.lang.reflect.Array;
-import java.util.LinkedList;
-import java.util.Queue;
-import java.util.Scanner;
-import java.util.Set;
-import java.util.Stack;
-import java.util.TreeSet;
+import java.util.*;
+import java.util.stream.Collectors;
 
 public class Week2
 {
@@ -140,6 +136,28 @@ public class Week2
     {
       System.out.print(reverseWord[i]);
     }
+  }
+
+  public static void startDay13()
+  {
+    String input = sc.nextLine();
+
+    String[] verificarParentesis = {"(", ")"};
+    String[] verificarCorchetes  = {"[", "]"};
+
+    boolean isCorrectParentesis = verifyIfInputIsCorrect(verificarParentesis, input);
+    boolean isCorrectCorchetes  = verifyIfInputIsCorrect(verificarCorchetes, input);
+
+    System.out.println((isCorrectParentesis || isCorrectCorchetes ? "YES" : "NO"));
+  }
+
+  private static boolean verifyIfInputIsCorrect(String[] arrInput, String input)
+  {
+    for (String item : arrInput)
+      if (!input.contains(item) || input.length() % 2 != 0)
+        return false;
+
+    return true;
   }
 
   public static Scanner sc = new Scanner(System.in).useDelimiter("\n");
