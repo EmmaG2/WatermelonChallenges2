@@ -160,8 +160,7 @@ public class Week2
 
   public static void startDay14()
   {
-    int numContultas    = sc.nextInt();
-    int opcionARealizar = 0;
+    int numContultas = sc.nextInt();
 
     HashMap<String, Integer> alumnos = new HashMap<String, Integer>();
 
