@@ -1,8 +1,6 @@
 package com.challenges;
 
-import java.lang.reflect.Array;
 import java.util.*;
-import java.util.stream.Collectors;
 
 public class Week2
 {
@@ -160,5 +158,46 @@ public class Week2
     return true;
   }
 
-  public static Scanner sc = new Scanner(System.in).useDelimiter("\n");
+  public static void startDay14()
+  {
+    int numContultas    = sc.nextInt();
+    int opcionARealizar = 0;
+
+    HashMap<String, Integer> alumnos = new HashMap<String, Integer>();
+
+    programLogic(numContultas, alumnos);
+  }
+
+  private static void programLogic(int numContultas, HashMap<String, Integer> alumnos)
+  {
+    int opcionARealizar;
+    for (int i = 0; i < numContultas; i++)
+    {
+      opcionARealizar = sc.nextInt();
+      String nombre   = sc.next();
+      int    calif;
+
+      if (opcionARealizar == 3)
+      {
+        System.out.println(alumnos.get(nombre));
+        continue;
+      }
+      else
+      {
+        calif = sc.nextInt();
+      }
+
+      if (opcionARealizar == 1)
+      {
+        alumnos.put(nombre, alumnos.getOrDefault(nombre, 0) + calif);
+      }
+
+      if (opcionARealizar == 2)
+      {
+        alumnos.remove(nombre);
+      }
+    }
+  }
+
+  public static Scanner sc = new Scanner(System.in);
 }

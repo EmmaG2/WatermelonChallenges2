@@ -4,9 +4,6 @@ public class Main
 {
   public static void main(String[] args) throws Exception
   {
-    Week2.startDay13();
-    Week2.startDay13();
-    Week2.startDay13();
-    Week2.startDay13();
+    Week2.startDay14();
   }
 }
