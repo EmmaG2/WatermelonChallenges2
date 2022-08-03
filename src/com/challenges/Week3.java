@@ -1,9 +1,6 @@
 package com.challenges;
 
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.LinkedList;
-import java.util.Scanner;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class Week3
@@ -45,5 +42,26 @@ public class Week3
 
   }
 
+  public static void startDay17()
+  {
+    int sequenceLength = sc.nextInt();
+    int changes = 0;
+    List<Integer> sequence = new ArrayList<>();
+    List<Integer> removidos = new ArrayList<>();
+
+    for (int i = 0; i < sequenceLength; i++) sequence.add(sc.nextInt());
+
+    for (int number : sequence)
+    {
+      if (removidos.contains(number)) continue;
+
+      if (Collections.frequency(sequence, number) > number) changes += (Collections.frequency(sequence, number) - number);
+      if (Collections.frequency(sequence, number) < number) changes += Collections.frequency(sequence, number);
+
+      removidos.add(number);
+    }
+
+    System.out.println(changes);
+  }
   public static Scanner sc = new Scanner(System.in);
 }

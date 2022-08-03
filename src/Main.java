@@ -4,6 +4,6 @@ public class Main
 {
   public static void main(String[] args) throws Exception
   {
-    Week3.startDay16();
+    Week3.startDay17();
   }
 }
