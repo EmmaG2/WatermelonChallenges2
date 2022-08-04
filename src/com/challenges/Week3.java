@@ -55,7 +55,8 @@ public class Week3
     {
       if (removidos.contains(number)) continue;
 
-      if (Collections.frequency(sequence, number) > number) changes += (Collections.frequency(sequence, number) - number);
+      if (Collections.frequency(sequence, number) > number)
+        changes += (Collections.frequency(sequence, number) - number);
       if (Collections.frequency(sequence, number) < number) changes += Collections.frequency(sequence, number);
 
       removidos.add(number);
@@ -63,5 +64,49 @@ public class Week3
 
     System.out.println(changes);
   }
+
+  public static void startDay18()
+  {
+    int cantidadCanicas;
+    int cantidadConsultas;
+    int numCases = 0;
+
+    do
+    {
+      cantidadCanicas = sc.nextInt();
+      cantidadConsultas = sc.nextInt();
+      List<Integer> canicas = new ArrayList<>();
+      List<Integer> consultas = new ArrayList<>();
+
+      relleranInfo(cantidadCanicas, cantidadConsultas, canicas, consultas);
+      numCases = getNumCases(numCases, canicas);
+      printIfFounded(canicas, consultas);
+
+    } while (cantidadCanicas != 0 && cantidadConsultas != 0);
+  }
+
+  private static void printIfFounded(List<Integer> canicas, List<Integer> consultas)
+  {
+    for (int numConsulta : consultas)
+    {
+      if (canicas.contains(numConsulta)) System.out.println(numConsulta + " found at " + (canicas.indexOf(numConsulta) + 1));
+      else System.out.println(numConsulta + " not found");
+    }
+  }
+
+  private static int getNumCases(int numCases, List<Integer> canicas)
+  {
+    Collections.sort(canicas);
+    numCases++;
+    System.out.println("\nCASE #" + numCases);
+    return numCases;
+  }
+
+  private static void relleranInfo(int cantidadCanicas, int cantidadConsultas, List<Integer> canicas, List<Integer> consultas)
+  {
+    for (int i = 0; i < cantidadCanicas; i++) canicas.add(sc.nextInt());
+    for (int i = 0; i < cantidadConsultas; i++) consultas.add(sc.nextInt());
+  }
+
   public static Scanner sc = new Scanner(System.in);
 }
