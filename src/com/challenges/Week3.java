@@ -89,7 +89,8 @@ public class Week3
   {
     for (int numConsulta : consultas)
     {
-      if (canicas.contains(numConsulta)) System.out.println(numConsulta + " found at " + (canicas.indexOf(numConsulta) + 1));
+      if (canicas.contains(numConsulta))
+        System.out.println(numConsulta + " found at " + (canicas.indexOf(numConsulta) + 1));
       else System.out.println(numConsulta + " not found");
     }
   }
@@ -106,6 +107,29 @@ public class Week3
   {
     for (int i = 0; i < cantidadCanicas; i++) canicas.add(sc.nextInt());
     for (int i = 0; i < cantidadConsultas; i++) consultas.add(sc.nextInt());
+  }
+
+  public static void startDay18Dot5()
+  {
+    StringBuilder message = new StringBuilder();
+    int cities = sc.nextInt();
+
+    for (int i = 0; i < cities; i++)
+    {
+      List<Integer> list = new ArrayList<>();
+      int n = sc.nextInt();
+      int p = sc.nextInt();
+
+      for (int j = 0; j < p; j++) {
+        list.add(sc.nextInt());
+        list.add(sc.nextInt());
+      }
+
+      if (list.size() > 2) message.append("1\n");
+      else message.append("0\n");
+    }
+
+    System.out.println(message);
   }
 
   public static Scanner sc = new Scanner(System.in);
