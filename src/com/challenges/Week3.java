@@ -132,5 +132,45 @@ public class Week3
     System.out.println(message);
   }
 
+  public static void startDay19()
+  {
+    int consultas = sc.nextInt();
+    StringBuilder mensaje = new StringBuilder("");
+    for (int i = 0; i < consultas; i++)
+    {
+      int granero = sc.nextInt();
+      int vacasLocas = sc.nextInt();
+      List<Integer> ubicacion = new ArrayList<>();
+
+      for (int j = 0; j < granero; j++) ubicacion.add(sc.nextInt());
+
+      Collections.sort(ubicacion);
+
+      int maximaDistancia = ubicacion.get(granero - 1) - ubicacion.get(0);
+      int distancia = Integer.MIN_VALUE;
+      for (int k = 1; k <= maximaDistancia; k++) {
+        boolean possible = isCompatible(ubicacion, k, vacasLocas);
+        if (possible) distancia = Math.max(distancia, k);
+      }
+      mensaje.append(distancia).append("\n");
+    }
+
+    System.out.println(mensaje);
+  }
+
+  static boolean isCompatible(List<Integer> ubicacion, int distancia, int vacasLocas) {
+    int vacas = ubicacion.size();
+    int vaca = ubicacion.get(0);
+    vacasLocas--;
+    for (int i = 1; i < vacas; i++) {
+      if (ubicacion.get(i) - vaca >= distancia) {
+        vacasLocas--;
+        if (vacasLocas == 0) return true;
+        vaca = ubicacion.get(i);
+      }
+    }
+    return false;
+  }
+
   public static Scanner sc = new Scanner(System.in);
 }
