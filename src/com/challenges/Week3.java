@@ -1,6 +1,7 @@
 package com.challenges;
 
 import java.util.*;
+import java.util.concurrent.atomic.AtomicInteger;
 import java.util.stream.Collectors;
 
 public class Week3
@@ -177,6 +178,30 @@ public class Week3
       }
     }
     return false;
+  }
+
+  public static void startDay20() {
+    int moviesQuantity = sc.nextInt();
+    LinkedList<LinkedList<Integer>> moviesHours = new LinkedList<>();
+    List<LinkedList<Integer>> moviesToWatch = new ArrayList<>();
+
+    for (int i = 0; i < moviesQuantity; i++)
+    {
+      LinkedList<Integer> moviesStartAndEndHours = new LinkedList<>();
+      moviesStartAndEndHours.add(sc.nextInt());
+      moviesStartAndEndHours.add(sc.nextInt());
+      moviesHours.add(moviesStartAndEndHours);
+    }
+
+    for (LinkedList<Integer> horario: moviesHours)
+    {
+      if (horario.getLast() > horario.getFirst() && (horario.getLast() - horario.getFirst()) <= 3) {
+        moviesToWatch.add(horario);
+      }
+    }
+
+    System.out.println(moviesToWatch.size());
+
   }
 
   public static Scanner sc = new Scanner(System.in);
