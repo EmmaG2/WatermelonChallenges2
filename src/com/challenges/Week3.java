@@ -136,26 +136,33 @@ public class Week3
   {
     int consultas = sc.nextInt();
     StringBuilder mensaje = new StringBuilder("");
+
     for (int i = 0; i < consultas; i++)
     {
       int granero = sc.nextInt();
       int vacasLocas = sc.nextInt();
       List<Integer> ubicacion = new ArrayList<>();
 
-      for (int j = 0; j < granero; j++) ubicacion.add(sc.nextInt());
+      addCows(granero, ubicacion);
 
-      Collections.sort(ubicacion);
-
-      int maximaDistancia = ubicacion.get(granero - 1) - ubicacion.get(0);
-      int distancia = Integer.MIN_VALUE;
-      for (int k = 1; k <= maximaDistancia; k++) {
-        boolean possible = isCompatible(ubicacion, k, vacasLocas);
-        if (possible) distancia = Math.max(distancia, k);
-      }
-      mensaje.append(distancia).append("\n");
+      getDistance(mensaje, granero, vacasLocas, ubicacion);
     }
 
     System.out.println(mensaje);
+  }
+
+  private static void getDistance(StringBuilder mensaje, int granero, int vacasLocas, List<Integer> ubicacion)
+  {
+    int maximaDistancia = ubicacion.get(granero - 1) - ubicacion.get(0);
+    int distancia = Integer.MIN_VALUE;
+    for (int k = 1; k <= maximaDistancia; k++) if (isCompatible(ubicacion, k, vacasLocas)) distancia = Math.max(distancia, k);
+    mensaje.append(distancia).append("\n");
+  }
+
+  private static void addCows(int granero, List<Integer> ubicacion)
+  {
+    for (int j = 0; j < granero; j++) ubicacion.add(sc.nextInt());
+    Collections.sort(ubicacion);
   }
 
   static boolean isCompatible(List<Integer> ubicacion, int distancia, int vacasLocas) {
