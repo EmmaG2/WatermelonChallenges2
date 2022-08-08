@@ -1,43 +1,50 @@
 package com.challenges;
 
 import java.util.Scanner;
-import java.util.Vector;
 
-public class Week4
-{
-  public static Scanner sc     = new Scanner(System.in);
-  public static long    module = 1000000007;
+public class Week4 {
+  static final int module = 1000000007;
+  static Scanner sc = new Scanner(System.in);
 
-  public static void startDay22()
-  {
-    int a, b;
-
-    a = sc.nextInt();
-    b = sc.nextInt();
-
-    Vector<Integer> v = new Vector<>(a + b);
-
-    v.add(0, 1);
-
-    for (int i = 1; i < a + b; i++)
-      v.add(i, (int)((v.get(i - 1) * i) % module));
+  static long power(long a, int k) {
     // clang-format off
+    if (k == 0) return 1;
 
-    var result = ((((long) v.get(a + b - 1)
-        * power((Integer) v.get(b), module - 2)) % module)
-        * power((Integer) v.get(a - 1), module - 2)) % module;
+    long result = power(a, k / 2);
+    result = result * result % module;
 
-    System.out.println(result);
+    if (k % 2 == 1) result = result * a % module;
+    return result;
   }
 
-  private static int power(long a, long b)
-  {
-    if (b == 0) return 1;
-    int tmp = power(a, b / 2);
+  static int choose(int a, int b) {
+    try {
+      int c = a - b;
+      int fa = 0, fb = 0, fc = 0;
+      int f = 1;
+      for (int i = 0; i <= a; i++) {
+        if (i == a) fa = f;
+        if (i == b) fb = f;
+        if (i == c) fc = f;
+        f = (int) ((long) f * (i + 1) % module);
+      }
+      return (int) (fa * power((long) fb * fc % module, module - 2) % module);
+    } catch (Error e) {
+      System.out.println("Error");
+      return 0;
+    }
+  }
 
-    tmp = (int) ((tmp * tmp) % module);
-    if (b % 2 == 1) return (int) ((tmp * a) % module);
-
-    return tmp;
+  // clang-format on
+  public static void startDay22() {
+    int kids, apples;
+    try {
+      kids = sc.nextInt();
+      apples = sc.nextInt();
+    } catch (IllegalArgumentException e) {
+      System.out.println("Error");
+      return;
+    }
+    System.out.println(choose(apples + kids - 1, apples));
   }
 }
