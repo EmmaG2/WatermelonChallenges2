@@ -1,7 +1,6 @@
 package com.challenges;
 
 import java.util.*;
-import java.util.concurrent.atomic.AtomicInteger;
 import java.util.stream.Collectors;
 
 public class Week3
@@ -121,7 +120,8 @@ public class Week3
       int n = sc.nextInt();
       int p = sc.nextInt();
 
-      for (int j = 0; j < p; j++) {
+      for (int j = 0; j < p; j++)
+      {
         list.add(sc.nextInt());
         list.add(sc.nextInt());
       }
@@ -156,7 +156,8 @@ public class Week3
   {
     int maximaDistancia = ubicacion.get(granero - 1) - ubicacion.get(0);
     int distancia = Integer.MIN_VALUE;
-    for (int k = 1; k <= maximaDistancia; k++) if (isCompatible(ubicacion, k, vacasLocas)) distancia = Math.max(distancia, k);
+    for (int k = 1; k <= maximaDistancia; k++)
+      if (isCompatible(ubicacion, k, vacasLocas)) distancia = Math.max(distancia, k);
     mensaje.append(distancia).append("\n");
   }
 
@@ -166,12 +167,15 @@ public class Week3
     Collections.sort(ubicacion);
   }
 
-  static boolean isCompatible(List<Integer> ubicacion, int distancia, int vacasLocas) {
+  static boolean isCompatible(List<Integer> ubicacion, int distancia, int vacasLocas)
+  {
     int vacas = ubicacion.size();
     int vaca = ubicacion.get(0);
     vacasLocas--;
-    for (int i = 1; i < vacas; i++) {
-      if (ubicacion.get(i) - vaca >= distancia) {
+    for (int i = 1; i < vacas; i++)
+    {
+      if (ubicacion.get(i) - vaca >= distancia)
+      {
         vacasLocas--;
         if (vacasLocas == 0) return true;
         vaca = ubicacion.get(i);
@@ -180,7 +184,8 @@ public class Week3
     return false;
   }
 
-  public static void startDay20() {
+  public static void startDay20()
+  {
     int moviesQuantity = sc.nextInt();
     LinkedList<LinkedList<Integer>> moviesHours = new LinkedList<>();
     List<LinkedList<Integer>> moviesToWatch = new ArrayList<>();
@@ -193,15 +198,48 @@ public class Week3
       moviesHours.add(moviesStartAndEndHours);
     }
 
-    for (LinkedList<Integer> horario: moviesHours)
+    for (LinkedList<Integer> horario : moviesHours)
     {
-      if (horario.getLast() > horario.getFirst() && (horario.getLast() - horario.getFirst()) <= 3) {
+      if (horario.getLast() > horario.getFirst() && (horario.getLast() - horario.getFirst()) <= 3)
+      {
         moviesToWatch.add(horario);
       }
     }
 
     System.out.println(moviesToWatch.size());
 
+  }
+
+  public static void startDay21()
+  {
+    StringBuilder output = new StringBuilder("");
+
+    int compartimentos = sc.nextInt();
+    int fragmentos = sc.nextInt();
+    List<Integer> compartimentoParaCadaFragmento = new ArrayList<>();
+
+    addFragmento(compartimentos, compartimentoParaCadaFragmento);
+
+    getDistanceEntreFragmentos(output, compartimentos, fragmentos, compartimentoParaCadaFragmento);
+
+    System.out.println(output);
+  }
+
+  private static void addFragmento(int compartimentos, List<Integer> compartimentoParaCadaFragmento)
+  {
+    for (int j = 0; j < compartimentos; j++) compartimentoParaCadaFragmento.add(sc.nextInt());
+    Collections.sort(compartimentoParaCadaFragmento);
+  }
+
+  private static void getDistanceEntreFragmentos(StringBuilder output, int compartimentos,
+                                                 int fragmentos, List<Integer> compartimentoParaCadaFragmento)
+  {
+    int maximaDistancia = compartimentoParaCadaFragmento.get(compartimentos - 1) - compartimentoParaCadaFragmento.get(0);
+    int distancia = 0;
+    for (int k = 1; k <= maximaDistancia; k++)
+      if (isCompatible(compartimentoParaCadaFragmento, k, fragmentos)) distancia = Math.max(distancia, k);
+
+    output.append(distancia).append("\n");
   }
 
   public static Scanner sc = new Scanner(System.in);

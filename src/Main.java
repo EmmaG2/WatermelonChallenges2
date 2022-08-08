@@ -4,6 +4,6 @@ class Main
 {
   public static void main(String[] args)
   {
-    Week3.startDay20();
+    Week3.startDay21();
   }
 }
