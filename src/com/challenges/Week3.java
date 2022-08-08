@@ -123,7 +123,6 @@ public class Week3
     for (int i = 0; i < cities; i++)
     {
       List<Integer> list = new ArrayList<>();
-      int           n    = sc.nextInt();
       int           p    = sc.nextInt();
 
       for (int j = 0; j < p; j++)
