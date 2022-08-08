@@ -12,57 +12,57 @@ import java.util.Scanner;
  */
 public class CoflaChallengues
 {
-  static int hour = 0;
+    static int hour = 0;
 
-  public static void main( String[] args )
-  {
-    startChallenge2();
-    CoflaChallengues.hour += 1;
-    startChallenge2();
-    CoflaChallengues.hour += 1;
-    startChallenge2();
-    CoflaChallengues.hour += 1;
-    startChallenge2();
-    CoflaChallengues.hour += 1;
-    startChallenge2();
-    CoflaChallengues.hour += 1;
-    startChallenge2();
-  }
-
-  /**
-   * // Desafio 2
-   *
-   *  Dejar pasar solo a mayores de 18
-   *  El primero que entre despues de las 2 am no paga
-   *
-   * @author Emma
-   * @version
-   */
-  public static void startChallenge2()
-  {
-    Scanner sc = new Scanner( System.in );
-    int     age;
-
-    System.out.println( "Ingresa tu edad:" );
-    age = sc.nextInt();
-
-    System.out.println( allowJoin( age, hour ) );
-  }
-
-  private static String allowJoin( int age, int hour )
-  {
-    if ( age >= 18 && hour == 2 )
+    public static void main(String[] args)
     {
-      hour += 1;
-      return "Eres mayor, bienvenido a la fiesta, no pagas entrada";
+        startChallenge2();
+        CoflaChallengues.hour += 1;
+        startChallenge2();
+        CoflaChallengues.hour += 1;
+        startChallenge2();
+        CoflaChallengues.hour += 1;
+        startChallenge2();
+        CoflaChallengues.hour += 1;
+        startChallenge2();
+        CoflaChallengues.hour += 1;
+        startChallenge2();
     }
 
-    if ( age >= 18 )
+    /**
+     * // Desafio 2
+     *
+     *  Dejar pasar solo a mayores de 18
+     *  El primero que entre despues de las 2 am no paga
+     *
+     * @author Emma
+     * @version
+     */
+    public static void startChallenge2()
     {
-      return "Puedes entrar, pero tienes que pagar";
+        Scanner sc = new Scanner(System.in);
+        int age;
+
+        System.out.println("Ingresa tu edad:");
+        age = sc.nextInt();
+
+        System.out.println(allowJoin(age, hour));
     }
 
-    hour += 1;
-    return "Vete a tu casa bebito";
-  }
+    private static String allowJoin(int age, int hour)
+    {
+        if (age >= 18 && hour == 2)
+        {
+            hour += 1;
+            return "Eres mayor, bienvenido a la fiesta, no pagas entrada";
+        }
+
+        if (age >= 18)
+        {
+            return "Puedes entrar, pero tienes que pagar";
+        }
+
+        hour += 1;
+        return "Vete a tu casa bebito";
+    }
 }
