@@ -1,9 +1,9 @@
 import com.challenges.Week4;
 
-class Main
-{
-  public static void main(String[] args)
-  {
-    Week4.startDay22();
+import java.io.IOException;
+
+class Main {
+  public static void main(String[] args) throws IOException {
+    Week4.startDay23();
   }
 }
