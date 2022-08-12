@@ -4,6 +4,6 @@ import java.io.IOException;
 
 class Main {
   public static void main(String[] args) throws IOException {
-    Week4.startDay23();
+  Week4.startDay25();
   }
 }
