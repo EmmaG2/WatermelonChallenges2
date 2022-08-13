@@ -7,6 +7,8 @@ import com.challenges.graphs.Vertice;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.PrintWriter;
+import java.util.ArrayDeque;
 import java.util.Scanner;
 import java.util.StringTokenizer;
 
@@ -131,6 +133,87 @@ public class Week4 {
       int b = fsc.nextInt();
       miGrafo.insertarArista(vertices[a], vertices[b], 1);
     }
+  }
+
+  public static void startDay26() {
+    FastReader sc = new FastReader();
+    PrintWriter pw = new PrintWriter(System.out);
+    int n = sc.nextInt(), m = sc.nextInt();
+    char[][] c = new char[n][m];
+    char[][] pa = new char[n][m];
+    int x1 = 0, y1 = 0;
+    for (int i = 0; i < n; i++) {
+      c[i] = sc.next().toCharArray();
+      for (int j = 0; j < m; j++) {
+        if (c[i][j] == 'A') {
+          x1 = i;
+          y1 = j;
+        }
+      }
+    }
+    ArrayDeque<Node> q = new ArrayDeque<Node>();
+    q.add(new Node(x1, y1, 'S'));
+    boolean find = false;
+    while (!q.isEmpty()) {
+      Node te = q.pollFirst();
+      int x = te.x, y = te.y;
+      if (x < 0 || x >= n || y < 0 || y >= m || c[x][y] == '#')
+        continue;
+
+      pa[x][y] = te.c;
+      if (c[x][y] == 'B') {
+        find = true;
+        x1 = x;
+        y1 = y;
+        break;
+      }
+      c[x][y] = '#';
+
+      q.add(new Node(x + 1, y, 'D'));
+      q.add(new Node(x - 1, y, 'U'));
+      q.add(new Node(x, y + 1, 'R'));
+      q.add(new Node(x, y - 1, 'L'));
+
+    }
+    if (find) {
+      pw.println("YES");
+      StringBuffer str = new StringBuffer();
+      while (pa[x1][y1] != 'S') {
+        str.append(pa[x1][y1]);
+        if (pa[x1][y1] == 'D')
+          x1--;
+        else if (pa[x1][y1] == 'U')
+          x1++;
+        else if (pa[x1][y1] == 'R')
+          y1--;
+        else if (pa[x1][y1] == 'L')
+          y1++;
+      }
+      String res = str.toString();
+      pw.println(res.length());
+      for (int i = res.length() - 1; i >= 0; i--)
+        pw.print(res.charAt(i));
+    } else
+      pw.print("NO");
+
+    pw.close();
+  }
+
+  static class Node {
+    int x, y;
+    char c;
+
+    public Node(int x, int y, char c) {
+      this.x = x;
+      this.y = y;
+      this.c = c;
+    }
+  }
+
+  static <T> void deb(T x, int o) {
+    System.out.print(x);
+    if (o == 0)
+      System.out.println();
   }
 
   static class FastReader {
