@@ -264,6 +264,57 @@ public class Week4 {
         }
 
     }
+    public static void startDay28() {
+        FastReader sc = new FastReader();
+        HashMap<Integer, List<Integer>> g = new HashMap<>();
+        HashMap<Integer, Integer> asn = new HashMap<>();
+        int max = 0;
+
+        int n = sc.nextInt();
+        int m = sc.nextInt();
+        int k = sc.nextInt();
+
+        for (int i = 0; i < k; i++) {
+            int a = sc.nextInt();
+            int b = sc.nextInt();
+
+            b += n;
+
+            g.computeIfAbsent(a, kk -> new ArrayList<>()).add(b);
+        }
+
+        for (int i = 0; i < n; i++) {
+            if (!g.containsKey(i)) continue;
+            HashSet<Integer> visited = new HashSet<>();
+
+            if (isPareja(i, g, visited, asn)) max++;
+
+        }
+
+        System.out.println(max);
+
+        for (int j = 1 + n; j <= m + n; j++) {
+            if (asn.containsKey(j)) {
+                System.out.println(asn.get(j) + " " + (j - n));
+            }
+        }
+    }
+
+    private static boolean isPareja(int u, HashMap<Integer, List<Integer>> graph, HashSet<Integer> vis, HashMap<Integer, Integer> assign) {
+
+        if (vis.contains(u)) return false;
+
+        vis.add(u);
+        for (int v : graph.get(u)) {
+
+            if (!assign.containsKey(v) || isPareja(assign.get(v), graph, vis, assign)) {
+                assign.put(v, u);
+                return true;
+            }
+        }
+
+        return false;
+    }
 
     static class sourceInf {
 
