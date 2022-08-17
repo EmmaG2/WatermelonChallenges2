@@ -264,6 +264,7 @@ public class Week4 {
         }
 
     }
+
     public static void startDay28() {
         FastReader sc = new FastReader();
         HashMap<Integer, List<Integer>> g = new HashMap<>();
@@ -385,6 +386,30 @@ public class Week4 {
         }
 
 
+    }
+
+    public static void startDay29() {
+        FastReader sc = new FastReader();
+
+        int n = sc.nextInt();
+        int[] dp = new int[n + 1];
+
+        for (int i = 0; i <= n; i++) {
+            if (i < 10) dp[i] = 1;
+            else {
+                int max = Integer.MAX_VALUE;
+                int curr = i;
+                while (curr > 0) {
+                    int r = curr % 10;
+                    if (r != 0)
+                        max = Math.min(max, 1 + dp[i - r]);
+                    curr = curr / 10;
+                }
+                dp[i] = max;
+            }
+        }
+
+        System.out.println(dp[n]);
     }
 
     static class FastReader {
