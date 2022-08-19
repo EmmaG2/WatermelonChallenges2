@@ -1,60 +1,58 @@
-package com.challenges.desempate
+package com.challenges.desempate;
 
-import java.io.BufferedReader
-import java.io.IOException
-import java.io.InputStreamReader
-import java.io.PrintWriter
-import java.util.*
+import java.io.*;
+import java.util.StringTokenizer;
 
-object ChallengeOne {
-    @Throws(IOException::class)
-    @JvmStatic
-    fun main(args: Array<String>) {
-        val sc = FastReader()
-        val pw = PrintWriter(System.out)
-        
-        val n = sc.nextInt()
-        val m = sc.nextInt()
+public class ChallengeOne {
+  public static void main(String... args) throws IOException {
+      FastReader sc = new FastReader();
+      PrintWriter pw = new PrintWriter(System.out);
 
-        pw.println("Ready $n $m")
-        pw.close()
+      int n = sc.nextInt();
+      int m = sc.nextInt();
+
+      pw.close();
+  }
+
+  static class FastReader {
+    BufferedReader br;
+    StringTokenizer st;
+
+    public FastReader() {
+      br = new BufferedReader(new InputStreamReader(System.in));
     }
 
-    internal class FastReader {
-        private var br: BufferedReader = BufferedReader(InputStreamReader(System.`in`))
-        private var st: StringTokenizer? = null
-
-        operator fun next(): String {
-            while (st == null || !st!!.hasMoreElements()) {
-                try {
-                    st = StringTokenizer(br.readLine())
-                } catch (e: IOException) {
-                    e.printStackTrace()
-                }
-            }
-            return st!!.nextToken()
+    String next() {
+      while (st == null || !st.hasMoreElements()) {
+        try {
+          st = new StringTokenizer(br.readLine());
+        } catch (IOException e) {
+          e.printStackTrace();
         }
-
-        fun nextInt(): Int {
-            return next().toInt()
-        }
-
-        fun nextLong(): Long {
-            return next().toLong()
-        }
-
-        fun nextDouble(): Double {
-            return next().toDouble()
-        }
-
-        fun nextLine(): String {
-            var str = ""
-            try {
-                str = br.readLine()
-            } catch (e: IOException) {
-                e.printStackTrace()
-            }
-            return str
-        }
+      }
+      return st.nextToken();
     }
+
+    int nextInt() {
+      return Integer.parseInt(next());
+    }
+
+    Long nextLong() {
+      return Long.parseLong(next());
+    }
+
+    double nextDouble() {
+      return Double.parseDouble(next());
+    }
+
+    String nextLine() {
+      String str = "";
+      try {
+        str = br.readLine();
+      } catch (IOException e) {
+        e.printStackTrace();
+      }
+      return str;
+    }
+  }
 }
